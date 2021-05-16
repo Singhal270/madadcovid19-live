@@ -1,1 +1,1 @@
-web: gunicorn covidchatbot.wsgi --logfile
+web: gunicorn covidchatbot.wsgi
