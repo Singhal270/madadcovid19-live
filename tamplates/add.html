@@ -1,0 +1,67 @@
+<html>
+{% load static %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <h2 >Register yourself for help</h2>
+            <p><span class="text-success">Maddad | A IIT Indore Initiative</span></p>
+            <div>
+                {% for message in messages %}
+                <p class="alert {{message.tags}}" role="alert">{{message}}</p>
+                {% endfor %}
+            </div>
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form.name_of_field }}
+                <div class="form-group">
+                    <label>Your name</label>
+                    {{form.name}}
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    {{form.Number}}
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    {{form.email}}
+                </div>
+                <div class="form-group">
+                    <label>Tell us about Yourself (description)</label>
+                    {{form.description}}
+                </div>
+                <div class="form-group">
+                    <label>Resourses you have</label>
+                    <div class="card-body" style="border:1px solid grey;border-radius: 5px ">
+                    {% for res in form.resources %}
+                    <div>
+                    <label class="checkbox">{{res}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+                <div class="form-group">
+                    <label>Cities you can supply</label>
+                    <div class="card-body" style="border:1px solid grey;border-radius: 5px ">
+                    {% for city in form.city %}
+                    <div>
+                    <label class="checkbox">{{city}}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+                
+                <div class="row mt-6 ml-0">
+                <div class="form-group">
+                    <input type="submit" value="Register for Help" class="btn btn-danger ">
+                </div>
+            </div>
+            </form>
+        </div>
+    </body> 
+
+</html>
